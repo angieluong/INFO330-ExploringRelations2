@@ -1,1 +1,2 @@
-select employees.FirstName, employees.LastName, InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingState, BillingCountry, BillingPostalCode, Total from employees join (select * from invoices join customers on invoices.CustomerId = customers.CustomerId);
+-- Show the sales agent's full name and invoices associated with each sales agent.
+select employees.FirstName, employees.LastName, invoices.* from invoices join customers on (customers.CustomerId = invoices.CustomerId) join employees on (employees.EmployeeId = customers.SupportRepId);
